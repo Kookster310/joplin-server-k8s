@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: joplin-db
+  namespace: joplin-server-ns
+spec:
+  selector:
+    app: joplin-db
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432
+  clusterIP: None
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: joplin-app
+  namespace: joplin-server-ns
+spec:
+  selector:
+    app: joplin-app
+  ports:
+    - protocol: TCP
+      port: 22300
+      targetPort: 22300

@@ -1,0 +1,72 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: joplin-db
+  namespace: joplin-server-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: joplin-db
+  template:
+    metadata:
+      labels:
+        app: joplin-db
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:15
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - name: joplin-db-data
+              mountPath: /var/lib/postgresql/data
+          env:
+            - name: POSTGRES_PASSWORD
+              value: "3DmDDTHYQEo5aXh5^Q%i"
+            - name: POSTGRES_USER
+              value: user_joplin
+            - name: POSTGRES_DB
+              value: joplin
+      volumes:
+        - name: joplin-db-data
+          persistentVolumeClaim:
+            claimName: joplin-db-pvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: joplin-app
+  namespace: joplin-server-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: joplin-app
+  template:
+    metadata:
+      labels:
+        app: joplin-app
+    spec:
+      containers:
+        - name: joplin-server
+          image: etechonomy/joplin-server:latest
+          ports:
+            - containerPort: 22300
+          env:
+            - name: APP_PORT
+              value: "22300"
+            - name: APP_BASE_URL
+              value: "https://joplin-server.310networks.com"
+            - name: DB_CLIENT
+              value: pg
+            - name: POSTGRES_PASSWORD
+              value: "3DmDDTHYQEo5aXh5^Q%i"
+            - name: POSTGRES_DATABASE
+              value: joplin
+            - name: POSTGRES_USER
+              value: user_joplin
+            - name: POSTGRES_PORT
+              value: "5432"
+            - name: POSTGRES_HOST
+              value: joplin-db

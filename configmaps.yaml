@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: joplin-server-config
+  namespace: joplin-server-ns
+data:
+  db.config: |
+    POSTGRES_PASSWORD=mySecurePassword
+    POSTGRES_USER=user_joplin
+    POSTGRES_DB=joplin
+  app.config: |
+    APP_PORT=22300
+    APP_BASE_URL=https://joplin-server.310networks.com
+    DB_CLIENT=pg
+    POSTGRES_PASSWORD=mySecurePassword
+    POSTGRES_DATABASE=joplin
+    POSTGRES_USER=user_joplin
+    POSTGRES_PORT=5432
+    POSTGRES_HOST=joplin-db
+    MAILER_ENABLED=1
+    MAILER_HOST=
+    MAILER_AUTH_PASSWORD=
+    MAILER_NOREPLY_NAME=JoplinServer
+    MAILER_NOREPLY_EMAIL=noreply@310networks.com
