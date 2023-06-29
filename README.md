@@ -3,7 +3,7 @@
 
 Confirmed working in k3s cluster hosted on 4* LePotatos (arm64). 
 
-###Steps
+### Steps
 - Create namespace
 ```kubectl create ns joplin-server-ns```
 - Update config maps with your configurations (password, stmp, etc.)
