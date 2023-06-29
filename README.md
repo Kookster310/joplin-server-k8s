@@ -7,9 +7,7 @@ Confirmed working in k3s cluster hosted on 4* LePotatos (arm64).
 - Create namespace
 ```kubectl create ns joplin-server-ns```
 - Update config maps with your configurations (password, stmp, etc.)
-
-`joplin-server-k8s/db.configmap.yaml`
-
+`joplin-server-k8s/db.configmap.yaml`,
 `joplin-server-k8s/app.configmap.yaml`
 - Deploy
 ```kubectl apply -f joplin-server-k8s/```
