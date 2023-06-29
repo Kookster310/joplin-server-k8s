@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: joplin-db-config
+  namespace: joplin-server-ns
+data:
+  db.config: |
+    POSTGRES_PASSWORD=mySecurePassword
+    POSTGRES_USER=user_joplin
+    POSTGRES_DB=joplin

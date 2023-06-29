@@ -21,13 +21,9 @@ spec:
           volumeMounts:
             - name: joplin-db-data
               mountPath: /var/lib/postgresql/data
-          env:
-            - name: POSTGRES_PASSWORD
-              value: "3DmDDTHYQEo5aXh5^Q%i"
-            - name: POSTGRES_USER
-              value: user_joplin
-            - name: POSTGRES_DB
-              value: joplin
+          envFrom:
+          - configMapRef:
+              name: joplin-db-config
       volumes:
         - name: joplin-db-data
           persistentVolumeClaim:
@@ -53,20 +49,6 @@ spec:
           image: etechonomy/joplin-server:latest
           ports:
             - containerPort: 22300
-          env:
-            - name: APP_PORT
-              value: "22300"
-            - name: APP_BASE_URL
-              value: "https://joplin-server.310networks.com"
-            - name: DB_CLIENT
-              value: pg
-            - name: POSTGRES_PASSWORD
-              value: "3DmDDTHYQEo5aXh5^Q%i"
-            - name: POSTGRES_DATABASE
-              value: joplin
-            - name: POSTGRES_USER
-              value: user_joplin
-            - name: POSTGRES_PORT
-              value: "5432"
-            - name: POSTGRES_HOST
-              value: joplin-db
+          envFrom:
+          - configMapRef:
+              name: joplin-app-config
