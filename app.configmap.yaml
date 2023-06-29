@@ -4,19 +4,18 @@ metadata:
   name: joplin-app-config
   namespace: joplin-server-ns
 data:
-  app.config: |
-    APP_PORT=22300
-    APP_BASE_URL=https://joplin-server.310networks.com
-    DB_CLIENT=pg
-    POSTGRES_PASSWORD=mySecurePassword
-    POSTGRES_DATABASE=joplin
-    POSTGRES_USER=user_joplin
-    POSTGRES_PORT=5432
-    POSTGRES_HOST=joplin-db
-    MAILER_ENABLED=1
-    MAILER_HOST=
-    MAILER_SECURE=true
-    MAILER_AUTH_USER=
-    MAILER_AUTH_PASSWORD=
-    MAILER_NOREPLY_NAME=JoplinServer
-    MAILER_NOREPLY_EMAIL=noreply@310networks.com
+  APP_PORT: "22300"
+  APP_BASE_URL: "https://joplin-server.310networks.com"
+  DB_CLIENT: "pg"
+  POSTGRES_PASSWORD: "securepassword"
+  POSTGRES_DATABASE: "joplin"
+  POSTGRES_USER: "user_joplin"
+  POSTGRES_PORT: "5432"
+  POSTGRES_HOST: "joplin-db"
+  MAILER_ENABLED: "1"
+  MAILER_HOST: "smtp.example.com"
+  MAILER_SECURE: "true"
+  MAILER_AUTH_USER: "apikey"
+  MAILER_AUTH_PASSWORD: "securepassword"
+  MAILER_NOREPLY_NAME: "JoplinServer"
+  MAILER_NOREPLY_EMAIL: "noreply@310networks.com"
